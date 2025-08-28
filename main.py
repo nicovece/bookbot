@@ -10,7 +10,7 @@ def get_book_text(path_to_file):
 def main(book_path):
     book_text = get_book_text(book_path)
     print("=" *12 + " BOOKBOT " + "=" *12)
-    print("Analyzing book found at books/frankenstein.txt")
+    print(f"Analyzing book found at {book_path}")
     print("-" *12 + " Word Count " + "-" *12)
     print(words_count(book_text)) 
     print("-" *12 + " Character Count " + "-" *12)
@@ -18,5 +18,9 @@ def main(book_path):
     print(special_chars_count(chars_dict))
     print("=" *12 + " END " + "=" *12)
 
-main(args[1])
-    
+if len(sys.argv) == 2:
+    main(args[1])
+    sys.exit(0)
+else:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
